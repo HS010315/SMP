@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 199902805098732366}
   - component: {fileID: 198456009253259118}
   m_Layer: 0
-  m_Name: Particle attractor 003 lightning
+  m_Name: Particle lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

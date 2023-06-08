@@ -5,7 +5,7 @@ public class Singularity : MonoBehaviour
     //This is the main script which pulls the objects nearby
     [SerializeField] public float GRAVITY_PULL = 100f;
     public static float m_GravityRadius = 1f;
-
+    [SerializeField] GameObject obj;
     void Awake() {
         m_GravityRadius = GetComponent<SphereCollider>().radius;
 
@@ -14,10 +14,21 @@ public class Singularity : MonoBehaviour
         }
     }
     
-    void OnTriggerStay (Collider other) {
+    void OnTriggerStay (Collider other) 
+    {
         if(other.attachedRigidbody && other.GetComponent<SingularityPullable>()) {
             float gravityIntensity = Vector3.Distance(transform.position, other.transform.position) / m_GravityRadius;
             other.attachedRigidbody.AddForce((transform.position - other.transform.position) * gravityIntensity * other.attachedRigidbody.mass * GRAVITY_PULL * Time.smoothDeltaTime);
+        }
+    }
+    float time = 1f;
+    void Update()
+    {
+        time += Time.deltaTime;
+
+        if(time >= 5)
+        {
+            Destroy(obj);
         }
     }
 }
